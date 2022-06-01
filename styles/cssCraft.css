@@ -1,0 +1,324 @@
+html
+{
+    background: #000000; 
+}
+
+html, body
+{
+    margin: 0;
+    width: 100%;
+    height: 100%;
+	font-family: 'Lato', sans-serif;
+}
+
+#game * {
+	pointer-events: none;
+}
+    
+.blur {
+	-webkit-filter: blur(13px);
+	-moz-filter: blur(13px);	
+	filter: blur(13px);	
+}
+
+#start-screen
+{
+	background: linear-gradient(165deg, rgba(255, 234, 116, 0.7) 0%, rgba(255, 255, 255, 0) 50%, rgba(45, 140, 152, 0.9) 100%);
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	z-index: 100;
+	text-align: center;
+	color: white;
+	padding-top: 20px;
+}
+
+#start-screen label
+{
+	font-size: 1.1em;
+	margin-bottom: 15px;
+}
+
+#start-screen #logo {
+	margin: 150px 0 30px 0;
+}
+
+#start-screen a {
+	color: white;
+	margin: 100px 20px 0 20px;
+	display: inline-block;
+	text-decoration: none;
+}
+
+#overlay {
+	background: linear-gradient(0deg, rgba(6, 95, 57, 0.3) 0%, rgba(255, 255, 255, 0) 40%, rgba(191, 121, 39, 0.25) 100%);
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	z-index: 100;
+	pointer-events: none;
+}
+
+#game
+{
+	pointer-events: none;
+ 	background: linear-gradient(to bottom,  rgba(47,162,239,1) 0%,rgba(201,221,242,1) 100%); /* W3C */
+    image-rendering: optimizeSpeed;
+	image-rendering: pixelated;
+	perspective: 500px;
+    transform-style: flat;
+    transform-origin: 50% 50%;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+}    
+
+.threedee
+{
+    left: 50%;
+    top: 50%;
+    transform-style: preserve-3d;
+    position: absolute;   
+    backface-visibility: hidden;
+    transform-origin: 50% 50%;
+}
+
+#viewport
+{
+    transform-style: flat;
+	transition: filter .5s linear;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+
+#btn-options-fullscreen {
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	top: 20px;
+	right: 20px;
+	z-index: 1001;
+	background-color: rgba(0,0,0,0.60);
+	cursor: pointer;
+}
+
+#options-menu-container {
+	position: absolute;
+    z-index: 1001;
+	top: 60px;
+	right: 20px;
+}
+
+#options-menu-container:hover #options-menu {
+	display: block;
+}
+
+
+
+#btn-options-menu, #options-menu {
+	background-color: rgba(0,0,0,0.60);
+}
+#btn-options-menu {
+	float: right;
+	width: 30px;
+	height: 30px;
+	cursor: pointer;
+}
+
+#options-menu
+{
+	display: none;
+	margin-top: 30px;
+    color: white;
+    padding: 15px;
+}
+
+#options-menu fieldset
+{
+	white-space: nowrap;
+}
+
+#options-menu input[type="range"]
+{
+	width: 100px;
+	display: inline-block;
+	margin: 0 10px 0 0;
+}
+
+#options-menu input[type="checkbox"]
+{
+ 	border-radius: 0;
+    width: 20px;
+    height: 20px;
+    margin: 0 5px 0 0;
+    padding: 0;
+    vertical-align: middle;
+}
+
+
+#btn-pointer-lock {
+	z-index: 1000;
+	position: absolute;
+	bottom: 50px;
+	left: 0;
+	right: 0;
+	margin-left: auto;
+	margin-right: auto;
+	width: 120px;
+}
+
+.scene, .shape, .face {
+  position: absolute;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.face, .face-wrapper {
+  overflow: hidden;
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  /* hidden by default, prevent blinking and other weird rendering glitchs */
+}
+.face {
+	background-size: 100px;
+  	background-position: 0 0;
+	width: 100px;
+}
+
+[class*="cuboid"] .ft, [class*="cuboid"] .bk {
+  width: 100%;
+  height: 100%;
+}
+[class*="cuboid"] .bk {
+  left: 100%;
+}
+[class*="cuboid"] .rt {
+  -webkit-transform: rotateY(-90deg) translateX(-50%);
+  transform: rotateY(-90deg) translateX(-50%);
+}
+[class*="cuboid"] .lt {
+  -webkit-transform: rotateY(90deg) translateX(-50%);
+  transform: rotateY(90deg) translateX(-50%);
+}
+[class*="cuboid"] .tp {
+  -webkit-transform: rotateX(90deg) translateY(-50%);
+  transform: rotateX(90deg) translateY(-50%);
+}
+[class*="cuboid"] .bm {
+  -webkit-transform: rotateX(-90deg) translateY(-50%);
+  transform: rotateX(-90deg) translateY(-50%);
+}
+[class*="cuboid"] .lt {
+  left: 100%;
+}
+[class*="cuboid"] .bm {
+  top: 100%;
+}
+/* .block styles */
+.block {
+  opacity:1;
+  width:100px;
+  height:100px;
+}
+.block.fade-in {
+  animation: fade 0.25s;	
+}
+@keyframes fade {
+    from { opacity: 0 }
+    to { opacity: 1 }
+}
+
+.block .ft {
+  transform:translateZ(50px) !important; 
+  width:100px;
+  height:100px;
+}
+.block .bk {
+  transform:translateZ(-50px) rotateY(180deg) !important; 
+  width:100px;
+  height:100px;
+}
+.block .rt, .block .lt {
+  width:100px;
+  height:100px;
+}
+.block .tp, .block .bm {
+  width:100px;
+  height:100px;
+}
+.block .face {
+	background-color:#FFFFFF;
+	box-sizing: border-box;
+	background-size: 100px 100px;
+}
+.ft, .bk, .rt, .lt, .tp {
+    background-size: 400px 100px !important;
+}
+
+.rt {
+	background-position: 100px 0px;
+}
+
+.bk {
+    background-position: 200px 0px;
+}
+
+.lt {
+    background-position: 300px 0px;
+}
+
+
+.stone .bm, .dirt .bm, .grass .bm,  .gravel .bm, .brick .bm {
+    background-size: 400px 100px !important;
+	background-position: 300px 0px !important;
+}
+
+.grass .tp {
+	background-size: 100px 100px  !important;
+}
+
+
+/* Grass textures */
+
+.grass .tp {
+    background-image: url(/images/block_textures/grass_top.png);   
+}
+.grass .ft, .grass .bk, .grass .rt, .grass .lt  {
+    background-image: url(/images/block_textures/grass_side.png);   
+}
+
+/* dirt textures */
+.grass .bm, .dirt .ft, .dirt .bk, .dirt .rt, .dirt .lt, .dirt .tp, .dirt .bm {
+     background-image: url(/images/block_textures/dirt.png);     
+}
+
+/* Gravel textures */
+.gravel .ft, .gravel .bk, .gravel .rt, .gravel .lt, .gravel .tp, .gravel .bm {
+     background-image: url(/images/block_textures/gravel.png);     
+}
+
+/* Stone textures */
+.stone .ft, .stone .bk, .stone .rt, .stone .lt, .stone .tp, .stone .bm {
+     background-image: url(/images/block_textures/stone.png);     
+}
+
+/* brick textures */
+.brick .ft, .brick .bk, .brick .rt, .brick .lt, .brick .tp, .brick .bm {
+     background-image: url(/images/block_textures/brick.png);     
+}
+
+
+
+
+
+

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	  <title>CSSCRAFT</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">		
+		<link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet' type='text/css' />
+		<link href='styles/cssCraft.css' rel='stylesheet' type='text/css' />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+		<script src="javascript/prefixfree.min.js"></script>
+	</head>
+	<body>
+		<div id="ui" >
+			<button id="btn-pointer-lock" class="btn btn-success">Mouse Look</button>
+			<a id="btn-options-fullscreen"><img src="images/full-screen.png" alt="Menu" /></a>
+			<div id="options-menu-container">
+				<a id="btn-options-menu"><img src="images/menu.png" alt="Menu" /></a>
+				<div id="options-menu">
+					<label for="render-distance">Render Distance:</label>
+
+					<fieldset id="render-distance">
+						<input type="range" min="7" max="25" />
+						<label>15</label>
+					</fieldset>
+				</div>
+			</div>
+		</div>
+		<div id="start-screen">
+			<img id="logo" src="images/csscraft.png" alt="CSSCRAFT" />
+			<div class="container">
+				<button id="start" class="btn btn-success" >Start</button> 
+			</div>
+				<div>
+					<a href="https://github.com/" target="_blank" >
+						<div>
+							<img src="/images/GitHub.png" alt="GitHub Logo" />
+						</div>
+						<div>
+							View on GitHub
+						</div>
+					</a>
+				</div>
+		</div>
+		<div id="viewport" class="blur">
+			<div id="overlay"></div>
+			<div id="game">
+				<div id="rotation" class="threedee">
+					<div id="position" class="threedee">
+						<div class="level shape" />
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="javascript/CSSCraft.js"></script>
+		<script src="javascript/math_functions.js"></script>
+		<script src="javascript/perlin.js"></script>
+		<script src="javascript/level_manager.js"></script>
+		<script src="javascript/level_generator.js"></script>
+		<script src="javascript/init.js"></script>
+
+	</body>
+</html>
