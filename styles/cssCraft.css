@@ -13,12 +13,14 @@ html, body
 
 #game * {
 	pointer-events: none;
-}
+	backface-visibility: hidden;
+	perspective: 1000;
+} 
     
 .blur {
-	-webkit-filter: blur(13px);
-	-moz-filter: blur(13px);	
-	filter: blur(13px);	
+	-webkit-filter: blur(5px);
+	-moz-filter: blur(5px);	
+	filter: blur(5px);	
 }
 
 #start-screen
@@ -29,7 +31,7 @@ html, body
 	bottom: 0;
 	right: 0;
 	left: 0;
-	z-index: 100;
+	z-index: 1000;
 	text-align: center;
 	color: white;
 	padding-top: 20px;
@@ -60,7 +62,20 @@ html, body
 	right: 0;
 	left: 0;
 	z-index: 100;
-	pointer-events: none;
+	/* pointer-events: none; */
+	cursor: url(/images/crosshair.png), auto;
+}
+
+#overlay::after {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	content: '';
+	background-image: url(/images/crosshair.png);
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 #game
@@ -95,6 +110,16 @@ html, body
 	width: 100%;
 	height: 100%;
 	overflow: hidden;
+}
+
+#viewport::after {
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-image: url(/images/crosshair.png);
 }
 
 
@@ -189,75 +214,98 @@ html, body
   backface-visibility: hidden;
   /* hidden by default, prevent blinking and other weird rendering glitchs */
 }
-.face {
+/* .face {
 	background-size: 100px;
   	background-position: 0 0;
 	width: 100px;
-}
+	overflow: hidden;
+} */
 
-[class*="cuboid"] .ft, [class*="cuboid"] .bk {
+.cuboid .ft, .cuboid .bk {
   width: 100%;
   height: 100%;
 }
-[class*="cuboid"] .bk {
+.cuboid .bk {
   left: 100%;
 }
-[class*="cuboid"] .rt {
+.cuboid .rt {
   -webkit-transform: rotateY(-90deg) translateX(-50%);
   transform: rotateY(-90deg) translateX(-50%);
 }
-[class*="cuboid"] .lt {
+.cuboid .lt {
   -webkit-transform: rotateY(90deg) translateX(-50%);
   transform: rotateY(90deg) translateX(-50%);
 }
-[class*="cuboid"] .tp {
+.cuboid .tp {
   -webkit-transform: rotateX(90deg) translateY(-50%);
   transform: rotateX(90deg) translateY(-50%);
 }
-[class*="cuboid"] .bm {
+.cuboid .bm {
   -webkit-transform: rotateX(-90deg) translateY(-50%);
   transform: rotateX(-90deg) translateY(-50%);
 }
-[class*="cuboid"] .lt {
+.cuboid .lt {
   left: 100%;
 }
-[class*="cuboid"] .bm {
+.cuboid .bm {
   top: 100%;
 }
 /* .block styles */
-.block {
-  opacity:1;
-  width:100px;
-  height:100px;
+.block, .block * {
+  width: 101px;
+  height: 101px;
 }
-.block.fade-in {
-  animation: fade 0.25s;	
+
+
+.block.move-in {
+    animation: move 0.2s;	
 }
-@keyframes fade {
+@keyframes move {
+    from { top: 100px }
+    to { top: 0 }
+}
+
+.fade-in {
+	animation: fade-in 0.2s;
+	animation-fill-mode: both;
+}
+
+@keyframes fade-in {
     from { opacity: 0 }
     to { opacity: 1 }
 }
 
+.fade-out {
+	animation: fade-out 0.2s;
+	animation-fill-mode: both;
+}
+
+@keyframes fade-out {
+    from { opacity: 1 }
+    to { opacity: 0 }
+}
+
+
 .block .ft {
   transform:translateZ(50px) !important; 
-  width:100px;
-  height:100px;
+  /* width:100px;
+  height:100px; */
 }
 .block .bk {
   transform:translateZ(-50px) rotateY(180deg) !important; 
-  width:100px;
-  height:100px;
+  /* width:100px;
+  height:100px; */
 }
-.block .rt, .block .lt {
+/* .block .rt, .block .lt {
   width:100px;
   height:100px;
 }
 .block .tp, .block .bm {
   width:100px;
   height:100px;
-}
+} */
 .block .face {
-	background-color:#FFFFFF;
+	background-color:#000;
 	box-sizing: border-box;
 	background-size: 100px 100px;
 }
@@ -317,7 +365,33 @@ html, body
      background-image: url(/images/block_textures/brick.png);     
 }
 
+.btn-success {
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+}
 
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
 
 
 

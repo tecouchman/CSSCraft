@@ -4,9 +4,7 @@
 	  <title>CSSCRAFT</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">		
-		<link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet' type='text/css' />
 		<link href='styles/cssCraft.css' rel='stylesheet' type='text/css' />
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 		<script src="javascript/prefixfree.min.js"></script>
 	</head>
 	<body>
@@ -19,7 +17,7 @@
 					<label for="render-distance">Render Distance:</label>
 
 					<fieldset id="render-distance">
-						<input type="range" min="7" max="25" />
+						<input type="range" min="7" max="35" />
 						<label>15</label>
 					</fieldset>
 				</div>
@@ -31,7 +29,7 @@
 				<button id="start" class="btn btn-success" >Start</button> 
 			</div>
 				<div>
-					<a href="https://github.com/" target="_blank" >
+					<a href="https://github.com/tecouchman/CSSCraft" target="_blank" >
 						<div>
 							<img src="/images/GitHub.png" alt="GitHub Logo" />
 						</div>
@@ -42,11 +40,11 @@
 				</div>
 		</div>
 		<div id="viewport" class="blur">
-			<div id="overlay"></div>
+			<div id="overlay">
+			</div>
 			<div id="game">
 				<div id="rotation" class="threedee">
-					<div id="position" class="threedee">
-						<div class="level shape" />
+					<div id="scene" class="threedee">
 					</div>
 				</div>
 			</div>

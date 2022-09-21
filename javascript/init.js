@@ -2,14 +2,14 @@
 Game.init();
 Game.start();
 
-$('#start').click(function() {
+document.getElementById('start').onclick = function() {
 	Game.requestPointerLock();
+	Game.play();
 	
-	$('#start-screen').fadeOut(800, function() {
-		$('#viewport').removeClass('blur');
-	});
-})
+	document.getElementById('start-screen').classList.add('fade-out');
+	document.getElementById('viewport').classList.remove('blur');
+};
 
-$('#btn-options-fullscreen').click(function() {
+document.getElementById('btn-options-fullscreen').onclick = function() {
 	Game.toggleFullscreen();
-});
+};
