@@ -3,8 +3,8 @@ import { init as initWorldManager, spawnOffset, updateLevel, level, getRenderDis
 const tileSize = 100;
 
 let camera = {
-	worldPosition: { x: 0, y: 0, z: 0 },
-	cubePosition: { x: 0, y: 0, z: 0 },
+	worldPosition: { x: 0, y: 200, z: 0 },
+	cubePosition: { x: 0, y: 2, z: 0 },
 	spawnCubePosition: { x: 0, y: 0, z: 0 },
 	rotation: { x: 0, y: 0 }
 };
