@@ -62,7 +62,7 @@ body * {
 
 #overlay::after {
   content: '';
-  background-image: url(/images/crosshair.png);
+  background-image: url(../images/crosshair.png);
   background-repeat: no-repeat;
   background-position: center;
   pointer-events: none;
@@ -123,7 +123,7 @@ button,
 .combo-button {
   color: rgb(223, 222, 222);
   background-color: #797979;
-  background-image: url(/images/button_bg.png);
+  background-image: url(../images/button_bg.png);
   background-size: 60px;
   image-rendering: optimizeSpeed;
   image-rendering: pixelated;
@@ -290,29 +290,29 @@ button:hover,
 }
 
 .grass .face {
-  background-image: url(/images/block_textures/grass_side.png);
+  background-image: url(../images/block_textures/grass_side.png);
 }
 
 .grass .tp {
-  background-image: url(/images/block_textures/grass_top.png);
+  background-image: url(../images/block_textures/grass_top.png);
   background-size: 100% 100% !important;
 }
 
 .grass .bm,
 .dirt .face {
-  background-image: url(/images/block_textures/dirt.png);
+  background-image: url(../images/block_textures/dirt.png);
 }
 
 .gravel .face {
-  background-image: url(/images/block_textures/gravel.png);
+  background-image: url(../images/block_textures/gravel.png);
 }
 
 .stone .face {
-  background-image: url(/images/block_textures/stone.png);
+  background-image: url(../images/block_textures/stone.png);
 }
 
 .brick .face {
-  background-image: url(/images/block_textures/brick.png);
+  background-image: url(../images/block_textures/brick.png);
 }
 
 /* Animations */
