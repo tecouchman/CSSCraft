@@ -1,286 +1,310 @@
-DMDE Change Log
+/*
+ * A speed-improved perlin and simplex noise algorithms for 2D.
+ *
+ * Based on example code by Stefan Gustavson (stegu@itn.liu.se).
+ * Optimisations by Peter Eastman (peastman@drizzle.stanford.edu).
+ * Better rank ordering method by Stefan Gustavson in 2012.
+ * Converted to Javascript by Joseph Gentle.
+ *
+ * Version 2012-03-09
+ *
+ * This code was placed in the public domain by its original author,
+ * Stefan Gustavson. You may use it as you see fit, but
+ * attribution is appreciated.
+ *
+ */
 
-Version 4.0.0.800 (2022-03-06)
-	new: Btrfs support (without RAID support)
-	new: new ReFS modifications support (up to v3.7)
-	improved: interface improvements
-	fixed: APFS reconstruction critical bug
-	fixed: support for APFS "duplicated" files
-	other improvements and fixes
-
-Version 3.8.0.790 (2020-11-08)
-	new: APFS support (without encryption)
-	new: image preview (for standard graphics)
-	new: Portuguese Brazilian, Simplified Chinese translations
-	fixed: HFS support critical bugs
-	fixed: extfs Full Scan critical bug processing damaged inodes
-	other improvements and fixes
-
-Version 3.6.1.773 (2019-10-12)
-	new: 64-bit version for macOS
-
-Version 3.6.0.770 (2019-09-14)
-	new: ReFS v1/v3 support
-	new: filtering Raw results by using cluster map
-	new: applying Raw results to FS data
-	new: support for VMDK disk image files
-	new: support for EWF disk image files (e01/etc., Professional Edition only)
-	improved: cluster map support (diff. FS types / damaged FS / reports)
-	improved: more presize detection of RAID parameters, fixed offset detection
-	fixed: HFS support critical bugs
-	fixed: extfs some rare parameters support
-	fixed: exFAT found directory fragments processing
-	fixed: copying sectors bug when loading log with retried bad ranges
-	other improvements and fixes
-
-Version 3.4.4.740 (2018-08-03)
-	new: version for macOS
-	new: GUI version for Linux
-	improved: size detection of some Jpeg files (Raw search)
-	fixed: support for custom EOF signatures (Raw search)
-	other improvements and fixes
-
-Version 3.4.2.722 (2017-11-21)
-	new: Apple partitioning support (read-only)
-	new: HFS+/HFSX support including complex HFS search
-	new: popup hints
-	improved: detection of some file types (Raw search)
-	improved: custom file signature support (detection, complex signatures)
-	fixed: RAID-6 detection critical bug
-	other improvements and fixes
-
-Version 3.2.0.692 (2017-01-14)
-	new: tabbed interface to work with multiple devices and objects
-	new: custom file signatures support
-	new: detection of RAID parameters
-	new: support for VHD and VHDX dynamic disk image files
-	new: SMART report reading
-	new: NTFS encrypted file recovery (without decryption)
-	new: NTFS option: reading MFT from an external file
-	new: disk imaging option: splitted image creation
-	improved: exFAT boot sector recognition during fullscan
-	improved: improved NTFS reconstruction by processing INDX records
-	improved: better name recognition for some removed NTFS files
-	other improvements and fixes
-
-Version 3.0.6.648 (2016-06-22)
-	new: recovery of some truncated NTFS files
-	improved: file signatures and size detection
-	improved: branches separation of directory tree (NTFS and extfs)
-	fixed: NTFS search critical bug
-	fixed: storing/loading found signatures to/from log
-	fixed: RAID-5 forward dynamic parity: wrong striping
-	new: French, Italian, Spanish, Persian (+RTL UI) translation
-	other improvements and fixes
-
-Version 3.0.4.630 (2015-10-15)
-	new: Full Scan (multiple FS and Raw search, improved interface)
-	new: Raw file search by signatures
-	new: NTFS extended search (FS structures and file signatures based)
-	new: exFAT extended search (FS structures and file signatures based)
-	new: extfs extended search (FS structures based)
-	new: extfs removed entries processing
-	new: FAT32 removed file recovery using signatures
-	other improvements and fixes
-
-Version 2.10.2.564 (2014-12-11)
-	improved: NTFS reconstruction default filters
-	fixed: exFAT reconstruction when there are removed directories
-	fixed: ex(FAT) table processing memory exception
-	fixed: search string in 64-bit version
-	fixed: extFS superblock detection in 64-bit version
-	fixed: extFS 64-bit support
-	other fixes
-
-Version 2.10.0.560 (2014-07-12)
-	added: Basic exFAT support
-	added: DOS ASPI support
-	improved: FAT reconstruction
-	fixed: 64-bit versions issues
-	some bugs fixed
-
-Version 2.8.2.546 (2014-04-18)
-	fixed: extfs: missing files while recovering
-	fixed: extfs: reporting error for sparse files
-	fixed: extfs inode template
-	fixed: DOS version bugs (device selection when copy sectors)
-	fixed: DOS ATA reset option is not visible
-	other fixes
-
-Version 2.8.0.542 (2014-02-13)
-	added: Basic Ext2/3/4 support
-	added: Disk Editor: custom template support
-	fixed: critical error when open some USB devices
-	minor improvements and fixes
-
-Version 2.6.0.522 (2013-11-18)
-	added: GUID partitioning (GPT) support (edit mode)
-	added: Disk images/clones: load/save parameters, write log; resume using log (Prof. Edition)
-	added: Disk images/clones: simultaneous read and write in two threads (Linux and Windows)
-	added: Bad I/O option: replace bad sector data by filler
-	added: RAID: RAID-6 support (only XOR recovery), custom striping, load/save parameters
-	added: Undo, Redo support (Disk Editor, Partition Manager)
-	added: ATA software reset (DOS ATA)
-	added: Unicode support for Windows console interface, Linux terminal interface, Disk Editor
-	added: NTFS reconstruction: MFT fragment manager
-	added: additional NTFS features to recover lost or damaged files
-	added: NTFS Search: search shifted MFT records
-	improved: NTFS Search: handling many MFT fragments optimization
-	improved: FAT Search: search volumes w/o subdirectories, detect small FAT tables
-	other improvements
-
-Version 2.4.6.448 (2013-08-29)
-	fixed: erroneous omission of some close small MFT fragments
-	fixed: handling found MFT fragment larger than 2GB
-	fixed: cache error (data confusion on drives >2TiB in some special cases)
-	fixed: search by name (last symbol omission for name without extension)
-	other bugs fixed
-
-Version 2.4.4.442 (2012-09-05)
-	fixed: RAID redundant data parity use when disk is absent
-	fixed: read backward issues
-	fixed: NTFS Search 64-bit cluster support
-	minor improvements and fixes
-
-Version 2.4.2 (2012-04-05)
-	fixed: disk size detection
-	fixed: NTFS sparse file support
-	fixed: GPT copy test
-	fixed: Chinese Big5 Code issue
-	other bugs fixed
-
-Version 2.4.0 (2011-12-18)
-	improved: partition search (flash disks, Vista/Win7 partitioning)
-	improved: handling directory recovery with the same names
-	improved: FAT volume scan uses FAT Search results
-	added: recovery reports
-	added: exFAT boot sector, Ext2/3/4 superblock detection
-	added: RAID delayed parity support, RAID-4 support
-	added: NTFS alternate data stream support
-	fixed: Large sector support
-	fixed: NTFS search critical bug on MFT gaps
-	fixed: special sector search critical bug
-	fixed: device I/O error handling bug
-	fixed: pci scan for ATA devices over non-default ports (DOS)
-	fixed: DMA transfer completing detection (DOS)
-	other improvements
-	other bugs fixed
-
-Version 2.2.2 (2010-12-10)
-	imporved: FAT search speed up
-	imporved: NTFS search speed up
-	improved: partition manager
-	fixed, improved: volume locking
-	added: customizable device I/O error handler (Professional Edition only)
-	added: DMA I/O under DOS (Professional Edition only)
-	added: recover NTFS multirecord files w/o attribute list
-	added: support for compressed files when cluster size is less than 4KB
-	some bugs fixed
-
-Version 2.0.1 (2009-09-20)
-	added: version for Linux terminal
-	added: support for devices larger than 1TB
-	added: device I/O retry dialog
-	added: RAID partial support
-	added: GPT partial support
-	added: Unicode name support
-	added: support for large NTFS compressed files
-	added: multi language support
-	added: file and directory marking for group recovery
-	improved: device access 
-	interface improved
-	other improvements
-	some bugs fixed
-
-Version 01.39 (2008-05-01)
-	added: Windows XP+ theme support
-	added: write siupport under Windows Vista+
-
-Version 01.38 (2007-09-03)
-	added: GUI version
-	improved: NTFS search
-	improved: processing lost FAT directories
-	some bugs fixed
-
-Version 01.37 (2007-07-23)
-	improved: faster input/output operations
-	added: recovery NTFS directory structure (full version only)
-	added: support for disk images
-	added: support for IDE ATA drives in DOS version
-	added: support for DOS logical drives DOS version
-	interface improved
-	some bugs fixed
-
-Version 01.36 (2006-10-22)
-	added: russian/english interface
-	added: work with FAT volumes with damaged directories structure
-	added: directory recovery (full version only)
-	some bugs fixed
-
-Version 01.35 (2006-09-10)
-	added: cluster map
-	added: support for FAT files >2GB and NTFS files >4GB
-	fixed: NTFS Search
-	fixed: writing to MFT reserved area when create NTFS files and directories
-	fixed: NTFS directory recovery (support for 64bits, file attributes corrected)
-
-Version 01.34 (2006-07-27)
-	added: support for different NTFS versions
-	fixed: processing NTFS volumes without MFT record 0
-	improved: NTFS indexes reading
-
-Version 01.33 (2006-07-19)
-	fixed: MFTMirr updating after MFT modification
-	fixed: NTFS extended attribute processing
-
-Version 01.32 (2006-07-13)
-	added: direct NTFS write access
-	some small bugs fixed
-
-Version 01.30 (2006-06-26)
-	critical bug fixed: detecting XBIOS in 32bit DOS version
-	fixed: NTFS FILE fragmented record processing
-	added: FAT Search
-	added: file panel for FAT
-	added: write file to sectors, save sectors to file
-	added: work without FAT tables, with bad FAT tables
-	improved: partition manager
-	improved: NTFS file enumeration
-	improved: removed file recovery for FAT
-	improved: interface
-	changed: Windows event handler
-	some other logical bugs fixed
-	some other modifications
-
-Version 01.23 (2006-03-27)
-	fixed: processing cluster chains for removed FAT files
-	fixed: mouse and keyboard processing under Windows
-
-Version 01.22 (2006-03-23)
-	added: versions for Windows NT/2000/XP
-	some interface improvements
-
-Version 01.21 (2006-03-17)
-	added: 32-bit DOS version
-	some interface improvements
-	some bugs fixed
-
-Version 01.20 (2006-01-09)
-	added: quick search for lost partitions
-	added: simple partition manager
-	added: file recovery
-	some bugs fixed
-
-Version 01.11 (2005-12-23)
-	improved: NTFS Search (more information used, some bugs fixed)
-
-Version 01.10 (2005-11-18)
-	added: NTFS Search
-	added: safe processing compressed files with errors
-	fixed: memory loss
-	fixed: error handling
-	some interface modifications
-
-Version 01.04 (2005-09-17)
-	added: support for NTFS volumes without MFT
-	fixed: incorrect partition start sector for
+(function(global){
+	var module = global.noise = {};
+  
+	function Grad(x, y, z) {
+	  this.x = x; this.y = y; this.z = z;
+	}
+	
+	Grad.prototype.dot2 = function(x, y) {
+	  return this.x*x + this.y*y;
+	};
+  
+	Grad.prototype.dot3 = function(x, y, z) {
+	  return this.x*x + this.y*y + this.z*z;
+	};
+  
+	var grad3 = [new Grad(1,1,0),new Grad(-1,1,0),new Grad(1,-1,0),new Grad(-1,-1,0),
+				 new Grad(1,0,1),new Grad(-1,0,1),new Grad(1,0,-1),new Grad(-1,0,-1),
+				 new Grad(0,1,1),new Grad(0,-1,1),new Grad(0,1,-1),new Grad(0,-1,-1)];
+  
+	var p = [151,160,137,91,90,15,
+	131,13,201,95,96,53,194,233,7,225,140,36,103,30,69,142,8,99,37,240,21,10,23,
+	190, 6,148,247,120,234,75,0,26,197,62,94,252,219,203,117,35,11,32,57,177,33,
+	88,237,149,56,87,174,20,125,136,171,168, 68,175,74,165,71,134,139,48,27,166,
+	77,146,158,231,83,111,229,122,60,211,133,230,220,105,92,41,55,46,245,40,244,
+	102,143,54, 65,25,63,161, 1,216,80,73,209,76,132,187,208, 89,18,169,200,196,
+	135,130,116,188,159,86,164,100,109,198,173,186, 3,64,52,217,226,250,124,123,
+	5,202,38,147,118,126,255,82,85,212,207,206,59,227,47,16,58,17,182,189,28,42,
+	223,183,170,213,119,248,152, 2,44,154,163, 70,221,153,101,155,167, 43,172,9,
+	129,22,39,253, 19,98,108,110,79,113,224,232,178,185, 112,104,218,246,97,228,
+	251,34,242,193,238,210,144,12,191,179,162,241, 81,51,145,235,249,14,239,107,
+	49,192,214, 31,181,199,106,157,184, 84,204,176,115,121,50,45,127, 4,150,254,
+	138,236,205,93,222,114,67,29,24,72,243,141,128,195,78,66,215,61,156,180];
+	// To remove the need for index wrapping, double the permutation table length
+	var perm = new Array(512);
+	var gradP = new Array(512);
+  
+	// This isn't a very good seeding function, but it works ok. It supports 2^16
+	// different seed values. Write something better if you need more seeds.
+	module.seed = function(seed) {
+	  if(seed > 0 && seed < 1) {
+		// Scale the seed out
+		seed *= 65536;
+	  }
+  
+	  seed = Math.floor(seed);
+	  if(seed < 256) {
+		seed |= seed << 8;
+	  }
+  
+	  for(var i = 0; i < 256; i++) {
+		var v;
+		if (i & 1) {
+		  v = p[i] ^ (seed & 255);
+		} else {
+		  v = p[i] ^ ((seed>>8) & 255);
+		}
+  
+		perm[i] = perm[i + 256] = v;
+		gradP[i] = gradP[i + 256] = grad3[v % 12];
+	  }
+	};
+  
+	module.seed(0);
+  
+	/*
+	for(var i=0; i<256; i++) {
+	  perm[i] = perm[i + 256] = p[i];
+	  gradP[i] = gradP[i + 256] = grad3[perm[i] % 12];
+	}*/
+  
+	// Skewing and unskewing factors for 2, 3, and 4 dimensions
+	var F2 = 0.5*(Math.sqrt(3)-1);
+	var G2 = (3-Math.sqrt(3))/6;
+  
+	var F3 = 1/3;
+	var G3 = 1/6;
+  
+	// 2D simplex noise
+	module.simplex2 = function(xin, yin) {
+	  var n0, n1, n2; // Noise contributions from the three corners
+	  // Skew the input space to determine which simplex cell we're in
+	  var s = (xin+yin)*F2; // Hairy factor for 2D
+	  var i = Math.floor(xin+s);
+	  var j = Math.floor(yin+s);
+	  var t = (i+j)*G2;
+	  var x0 = xin-i+t; // The x,y distances from the cell origin, unskewed.
+	  var y0 = yin-j+t;
+	  // For the 2D case, the simplex shape is an equilateral triangle.
+	  // Determine which simplex we are in.
+	  var i1, j1; // Offsets for second (middle) corner of simplex in (i,j) coords
+	  if(x0>y0) { // lower triangle, XY order: (0,0)->(1,0)->(1,1)
+		i1=1; j1=0;
+	  } else {    // upper triangle, YX order: (0,0)->(0,1)->(1,1)
+		i1=0; j1=1;
+	  }
+	  // A step of (1,0) in (i,j) means a step of (1-c,-c) in (x,y), and
+	  // a step of (0,1) in (i,j) means a step of (-c,1-c) in (x,y), where
+	  // c = (3-sqrt(3))/6
+	  var x1 = x0 - i1 + G2; // Offsets for middle corner in (x,y) unskewed coords
+	  var y1 = y0 - j1 + G2;
+	  var x2 = x0 - 1 + 2 * G2; // Offsets for last corner in (x,y) unskewed coords
+	  var y2 = y0 - 1 + 2 * G2;
+	  // Work out the hashed gradient indices of the three simplex corners
+	  i &= 255;
+	  j &= 255;
+	  var gi0 = gradP[i+perm[j]];
+	  var gi1 = gradP[i+i1+perm[j+j1]];
+	  var gi2 = gradP[i+1+perm[j+1]];
+	  // Calculate the contribution from the three corners
+	  var t0 = 0.5 - x0*x0-y0*y0;
+	  if(t0<0) {
+		n0 = 0;
+	  } else {
+		t0 *= t0;
+		n0 = t0 * t0 * gi0.dot2(x0, y0);  // (x,y) of grad3 used for 2D gradient
+	  }
+	  var t1 = 0.5 - x1*x1-y1*y1;
+	  if(t1<0) {
+		n1 = 0;
+	  } else {
+		t1 *= t1;
+		n1 = t1 * t1 * gi1.dot2(x1, y1);
+	  }
+	  var t2 = 0.5 - x2*x2-y2*y2;
+	  if(t2<0) {
+		n2 = 0;
+	  } else {
+		t2 *= t2;
+		n2 = t2 * t2 * gi2.dot2(x2, y2);
+	  }
+	  // Add contributions from each corner to get the final noise value.
+	  // The result is scaled to return values in the interval [-1,1].
+	  return 70 * (n0 + n1 + n2);
+	};
+  
+	// 3D simplex noise
+	module.simplex3 = function(xin, yin, zin) {
+	  var n0, n1, n2, n3; // Noise contributions from the four corners
+  
+	  // Skew the input space to determine which simplex cell we're in
+	  var s = (xin+yin+zin)*F3; // Hairy factor for 2D
+	  var i = Math.floor(xin+s);
+	  var j = Math.floor(yin+s);
+	  var k = Math.floor(zin+s);
+  
+	  var t = (i+j+k)*G3;
+	  var x0 = xin-i+t; // The x,y distances from the cell origin, unskewed.
+	  var y0 = yin-j+t;
+	  var z0 = zin-k+t;
+  
+	  // For the 3D case, the simplex shape is a slightly irregular tetrahedron.
+	  // Determine which simplex we are in.
+	  var i1, j1, k1; // Offsets for second corner of simplex in (i,j,k) coords
+	  var i2, j2, k2; // Offsets for third corner of simplex in (i,j,k) coords
+	  if(x0 >= y0) {
+		if(y0 >= z0)      { i1=1; j1=0; k1=0; i2=1; j2=1; k2=0; }
+		else if(x0 >= z0) { i1=1; j1=0; k1=0; i2=1; j2=0; k2=1; }
+		else              { i1=0; j1=0; k1=1; i2=1; j2=0; k2=1; }
+	  } else {
+		if(y0 < z0)      { i1=0; j1=0; k1=1; i2=0; j2=1; k2=1; }
+		else if(x0 < z0) { i1=0; j1=1; k1=0; i2=0; j2=1; k2=1; }
+		else             { i1=0; j1=1; k1=0; i2=1; j2=1; k2=0; }
+	  }
+	  // A step of (1,0,0) in (i,j,k) means a step of (1-c,-c,-c) in (x,y,z),
+	  // a step of (0,1,0) in (i,j,k) means a step of (-c,1-c,-c) in (x,y,z), and
+	  // a step of (0,0,1) in (i,j,k) means a step of (-c,-c,1-c) in (x,y,z), where
+	  // c = 1/6.
+	  var x1 = x0 - i1 + G3; // Offsets for second corner
+	  var y1 = y0 - j1 + G3;
+	  var z1 = z0 - k1 + G3;
+  
+	  var x2 = x0 - i2 + 2 * G3; // Offsets for third corner
+	  var y2 = y0 - j2 + 2 * G3;
+	  var z2 = z0 - k2 + 2 * G3;
+  
+	  var x3 = x0 - 1 + 3 * G3; // Offsets for fourth corner
+	  var y3 = y0 - 1 + 3 * G3;
+	  var z3 = z0 - 1 + 3 * G3;
+  
+	  // Work out the hashed gradient indices of the four simplex corners
+	  i &= 255;
+	  j &= 255;
+	  k &= 255;
+	  var gi0 = gradP[i+   perm[j+   perm[k   ]]];
+	  var gi1 = gradP[i+i1+perm[j+j1+perm[k+k1]]];
+	  var gi2 = gradP[i+i2+perm[j+j2+perm[k+k2]]];
+	  var gi3 = gradP[i+ 1+perm[j+ 1+perm[k+ 1]]];
+  
+	  // Calculate the contribution from the four corners
+	  var t0 = 0.5 - x0*x0-y0*y0-z0*z0;
+	  if(t0<0) {
+		n0 = 0;
+	  } else {
+		t0 *= t0;
+		n0 = t0 * t0 * gi0.dot3(x0, y0, z0);  // (x,y) of grad3 used for 2D gradient
+	  }
+	  var t1 = 0.5 - x1*x1-y1*y1-z1*z1;
+	  if(t1<0) {
+		n1 = 0;
+	  } else {
+		t1 *= t1;
+		n1 = t1 * t1 * gi1.dot3(x1, y1, z1);
+	  }
+	  var t2 = 0.5 - x2*x2-y2*y2-z2*z2;
+	  if(t2<0) {
+		n2 = 0;
+	  } else {
+		t2 *= t2;
+		n2 = t2 * t2 * gi2.dot3(x2, y2, z2);
+	  }
+	  var t3 = 0.5 - x3*x3-y3*y3-z3*z3;
+	  if(t3<0) {
+		n3 = 0;
+	  } else {
+		t3 *= t3;
+		n3 = t3 * t3 * gi3.dot3(x3, y3, z3);
+	  }
+	  // Add contributions from each corner to get the final noise value.
+	  // The result is scaled to return values in the interval [-1,1].
+	  return 32 * (n0 + n1 + n2 + n3);
+  
+	};
+  
+	// ##### Perlin noise stuff
+  
+	function fade(t) {
+	  return t*t*t*(t*(t*6-15)+10);
+	}
+  
+	function lerp(a, b, t) {
+	  return (1-t)*a + t*b;
+	}
+  
+	// 2D Perlin Noise
+	module.perlin2 = function(x, y) {
+	  // Find unit grid cell containing point
+	  var X = Math.floor(x), Y = Math.floor(y);
+	  // Get relative xy coordinates of point within that cell
+	  x = x - X; y = y - Y;
+	  // Wrap the integer cells at 255 (smaller integer period can be introduced here)
+	  X = X & 255; Y = Y & 255;
+  
+	  // Calculate noise contributions from each of the four corners
+	  var n00 = gradP[X+perm[Y]].dot2(x, y);
+	  var n01 = gradP[X+perm[Y+1]].dot2(x, y-1);
+	  var n10 = gradP[X+1+perm[Y]].dot2(x-1, y);
+	  var n11 = gradP[X+1+perm[Y+1]].dot2(x-1, y-1);
+  
+	  // Compute the fade curve value for x
+	  var u = fade(x);
+  
+	  // Interpolate the four results
+	  return lerp(
+		  lerp(n00, n10, u),
+		  lerp(n01, n11, u),
+		 fade(y));
+	};
+  
+	// 3D Perlin Noise
+	module.perlin3 = function(x, y, z) {
+	  // Find unit grid cell containing point
+	  var X = Math.floor(x), Y = Math.floor(y), Z = Math.floor(z);
+	  // Get relative xyz coordinates of point within that cell
+	  x = x - X; y = y - Y; z = z - Z;
+	  // Wrap the integer cells at 255 (smaller integer period can be introduced here)
+	  X = X & 255; Y = Y & 255; Z = Z & 255;
+  
+	  // Calculate noise contributions from each of the eight corners
+	  var n000 = gradP[X+  perm[Y+  perm[Z  ]]].dot3(x,   y,     z);
+	  var n001 = gradP[X+  perm[Y+  perm[Z+1]]].dot3(x,   y,   z-1);
+	  var n010 = gradP[X+  perm[Y+1+perm[Z  ]]].dot3(x,   y-1,   z);
+	  var n011 = gradP[X+  perm[Y+1+perm[Z+1]]].dot3(x,   y-1, z-1);
+	  var n100 = gradP[X+1+perm[Y+  perm[Z  ]]].dot3(x-1,   y,   z);
+	  var n101 = gradP[X+1+perm[Y+  perm[Z+1]]].dot3(x-1,   y, z-1);
+	  var n110 = gradP[X+1+perm[Y+1+perm[Z  ]]].dot3(x-1, y-1,   z);
+	  var n111 = gradP[X+1+perm[Y+1+perm[Z+1]]].dot3(x-1, y-1, z-1);
+  
+	  // Compute the fade curve value for x, y, z
+	  var u = fade(x);
+	  var v = fade(y);
+	  var w = fade(z);
+  
+	  // Interpolate
+	  return lerp(
+		  lerp(
+			lerp(n000, n100, u),
+			lerp(n001, n101, u), w),
+		  lerp(
+			lerp(n010, n110, u),
+			lerp(n011, n111, u), w),
+		 v);
+	};
+  
+  })(typeof module === "undefined" ? this : module.exports);

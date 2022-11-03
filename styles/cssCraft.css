@@ -1,398 +1,363 @@
-html
-{
-    background: #000000; 
+html,
+body {
+  background: #000000;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  color: white;
 }
 
-html, body
-{
-    margin: 0;
-    width: 100%;
-    height: 100%;
-	font-family: 'Lato', sans-serif;
+body * {
+  font-family: 'VT323', sans-serif;
 }
 
-#game * {
-	pointer-events: none;
-	backface-visibility: hidden;
-	perspective: 1000;
-} 
-    
 .blur {
-	-webkit-filter: blur(5px);
-	-moz-filter: blur(5px);	
-	filter: blur(5px);	
+  filter: blur(5px);
 }
 
-#start-screen
-{
-	background: linear-gradient(165deg, rgba(255, 234, 116, 0.7) 0%, rgba(255, 255, 255, 0) 50%, rgba(45, 140, 152, 0.9) 100%);
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	right: 0;
-	left: 0;
-	z-index: 1000;
-	text-align: center;
-	color: white;
-	padding-top: 20px;
+#start-screen,
+#overlay {
+  z-index: 1000;
 }
 
-#start-screen label
-{
-	font-size: 1.1em;
-	margin-bottom: 15px;
+#start-screen {
+  background: linear-gradient(165deg, rgba(255, 234, 116, 0.7) 0%, rgba(255, 255, 255, 0) 50%, rgba(45, 140, 152, 0.9) 100%);
+  text-align: center;
+  padding-top: 20px;
+}
+
+#start-screen>.container {
+  position: relative;
+  top: 50%;
+  margin-top: -100px;
+}
+
+#start,
+#github .combo-button {
+  margin-bottom: 15px;
+  width: 221px
 }
 
 #start-screen #logo {
-	margin: 150px 0 30px 0;
+  margin-bottom: 50px;
 }
 
 #start-screen a {
-	color: white;
-	margin: 100px 20px 0 20px;
-	display: inline-block;
-	text-decoration: none;
+  color: white;
+  text-decoration: none;
 }
 
-#overlay {
-	background: linear-gradient(0deg, rgba(6, 95, 57, 0.3) 0%, rgba(255, 255, 255, 0) 40%, rgba(191, 121, 39, 0.25) 100%);
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	right: 0;
-	left: 0;
-	z-index: 100;
-	/* pointer-events: none; */
-	cursor: url(/images/crosshair.png), auto;
+#start-screen,
+#overlay,
+#overlay::after,
+#game,
+#viewport {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  overflow: hidden;
 }
 
 #overlay::after {
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	content: '';
-	background-image: url(/images/crosshair.png);
-    background-repeat: no-repeat;
-    background-position: center;
+  content: '';
+  background-image: url(/images/crosshair.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  pointer-events: none;
 }
 
-#game
-{
-	pointer-events: none;
- 	background: linear-gradient(to bottom,  rgba(47,162,239,1) 0%,rgba(201,221,242,1) 100%); /* W3C */
-    image-rendering: optimizeSpeed;
-	image-rendering: pixelated;
-	perspective: 500px;
-    transform-style: flat;
-    transform-origin: 50% 50%;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    overflow: hidden;
-}    
-
-.threedee
-{
-    left: 50%;
-    top: 50%;
-    transform-style: preserve-3d;
-    position: absolute;   
-    backface-visibility: hidden;
-    transform-origin: 50% 50%;
+#game {
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(47, 162, 239, 1) 0%, rgba(201, 221, 242, 1) 100%);
+  image-rendering: optimizeSpeed;
+  image-rendering: pixelated;
+  perspective: 500px;
 }
 
-#viewport
-{
-    transform-style: flat;
-	transition: filter .5s linear;
-	width: 100%;
-	height: 100%;
-	overflow: hidden;
+.hidden {
+  display: none;
 }
 
-#viewport::after {
-	display: block;
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	background-image: url(/images/crosshair.png);
+.visible {
+  display: block;
 }
-
-
-#btn-options-fullscreen {
-	position: absolute;
-	width: 30px;
-	height: 30px;
-	top: 20px;
-	right: 20px;
-	z-index: 1001;
-	background-color: rgba(0,0,0,0.60);
-	cursor: pointer;
-}
-
-#options-menu-container {
-	position: absolute;
-    z-index: 1001;
-	top: 60px;
-	right: 20px;
-}
-
-#options-menu-container:hover #options-menu {
-	display: block;
-}
-
-
-
-#btn-options-menu, #options-menu {
-	background-color: rgba(0,0,0,0.60);
-}
-#btn-options-menu {
-	float: right;
-	width: 30px;
-	height: 30px;
-	cursor: pointer;
-}
-
-#options-menu
-{
-	display: none;
-	margin-top: 30px;
-    color: white;
-    padding: 15px;
-}
-
-#options-menu fieldset
-{
-	white-space: nowrap;
-}
-
-#options-menu input[type="range"]
-{
-	width: 100px;
-	display: inline-block;
-	margin: 0 10px 0 0;
-}
-
-#options-menu input[type="checkbox"]
-{
- 	border-radius: 0;
-    width: 20px;
-    height: 20px;
-    margin: 0 5px 0 0;
-    padding: 0;
-    vertical-align: middle;
-}
-
 
 #btn-pointer-lock {
-	z-index: 1000;
-	position: absolute;
-	bottom: 50px;
-	left: 0;
-	right: 0;
-	margin-left: auto;
-	margin-right: auto;
-	width: 120px;
-}
-
-.scene, .shape, .face {
   position: absolute;
-  -webkit-transform-style: preserve-3d;
-  transform-style: preserve-3d;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
+  bottom: 50px;
 }
-.face, .face-wrapper {
-  overflow: hidden;
-  -webkit-transform-origin: 0 0;
-  transform-origin: 0 0;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  /* hidden by default, prevent blinking and other weird rendering glitchs */
-}
-/* .face {
-	background-size: 100px;
-  	background-position: 0 0;
-	width: 100px;
-	overflow: hidden;
-} */
 
-.cuboid .ft, .cuboid .bk {
-  width: 100%;
+#btn-pointer-lock {
+  opacity: 0;
+  display: none;
+  width: 350px;
+  z-index: 1001;
+}
+
+#github {
+  font-size: 0.6em;
+}
+
+#github .button * {
+  vertical-align: middle;
+}
+
+#github img {
+  height: 25px;
+  margin-top: -2px;
+}
+
+#viewport {
+  transition: filter .5s linear;
+}
+
+button,
+.button,
+.combo-button {
+  color: rgb(223, 222, 222);
+  background-color: #797979;
+  background-image: url(/images/button_bg.png);
+  background-size: 60px;
+  image-rendering: optimizeSpeed;
+  image-rendering: pixelated;
+  display: inline-block;
+  box-shadow: inset -2px -4px #0006, inset 2px 2px #fff7;
+  border: 2px solid black;
+  font-size: 1.7em;
+  text-shadow: 2px 2px rgba(0, 0, 0, 0.60);
+  cursor: pointer;
+}
+
+button,
+.button {
+  padding: 4px 30px 8px 30px;
+}
+
+.combo-button>button,
+.combo-button>.button {
+  border: none;
   height: 100%;
+  padding: 4px 10px 8px 10px;
+  float: left;
 }
-.cuboid .bk {
+
+
+button:hover,
+.button:hover,
+.combo-button:hover {
+  border-color: white;
+}
+
+#menu button {
+  padding: 2px 3px;
+  float: right;
+  width: 40px;
+  height: 40px;
+  z-index: 1001;
+}
+
+#menu {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+#btn-menu {
+  cursor: default;
+}
+
+#menu>* {
+  position: relative;
+  float: right;
+  clear: both;
+  margin-bottom: 10px;
+  z-index: 1001;
+}
+
+#menu-container:hover #submenu {
+  display: block;
+}
+
+#submenu {
+  background-color: rgba(0, 0, 0, 0.60);
+}
+
+#submenu {
+  display: none;
+  margin-top: 40px;
+  padding: 10px;
+  text-align: center;
+}
+
+#submenu fieldset {
+  border: none;
+}
+
+#submenu input[type="range"] {
+  width: 100px;
+  display: inline-block;
+  margin: 10px 10px 0 0;
+}
+
+#scene,
+#rotation {
+  left: 50%;
+  top: 50%;
+  transform-origin: 50% 50%;
+}
+
+#game * {
+  position: absolute;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+.block,
+.block * {
+  width: 100.5px;
+  height: 100.5px;
+}
+
+.face,
+.face-wrapper {
+  overflow: hidden;
+  transform-origin: 0 0;
+}
+
+.bk,
+.lt {
   left: 100%;
-}
-.cuboid .rt {
-  -webkit-transform: rotateY(-90deg) translateX(-50%);
-  transform: rotateY(-90deg) translateX(-50%);
-}
-.cuboid .lt {
-  -webkit-transform: rotateY(90deg) translateX(-50%);
-  transform: rotateY(90deg) translateX(-50%);
-}
-.cuboid .tp {
-  -webkit-transform: rotateX(90deg) translateY(-50%);
-  transform: rotateX(90deg) translateY(-50%);
-}
-.cuboid .bm {
-  -webkit-transform: rotateX(-90deg) translateY(-50%);
-  transform: rotateX(-90deg) translateY(-50%);
-}
-.cuboid .lt {
-  left: 100%;
-}
-.cuboid .bm {
-  top: 100%;
-}
-/* .block styles */
-.block, .block * {
-  width: 101px;
-  height: 101px;
-}
-
-
-.block.move-in {
-    animation: move 0.2s;	
-}
-@keyframes move {
-    from { top: 100px }
-    to { top: 0 }
-}
-
-.fade-in {
-	animation: fade-in 0.2s;
-	animation-fill-mode: both;
-}
-
-@keyframes fade-in {
-    from { opacity: 0 }
-    to { opacity: 1 }
-}
-
-.fade-out {
-	animation: fade-out 0.2s;
-	animation-fill-mode: both;
-}
-
-@keyframes fade-out {
-    from { opacity: 1 }
-    to { opacity: 0 }
-}
-
-
-.block .ft {
-  transform:translateZ(50px) !important; 
-  /* width:100px;
-  height:100px; */
-}
-.block .bk {
-  transform:translateZ(-50px) rotateY(180deg) !important; 
-  /* width:100px;
-  height:100px; */
-}
-/* .block .rt, .block .lt {
-  width:100px;
-  height:100px;
-}
-.block .tp, .block .bm {
-  width:100px;
-  height:100px;
-} */
-.block .face {
-	background-color:#000;
-	box-sizing: border-box;
-	background-size: 100px 100px;
-}
-.ft, .bk, .rt, .lt, .tp {
-    background-size: 400px 100px !important;
 }
 
 .rt {
-	background-position: 100px 0px;
-}
-
-.bk {
-    background-position: 200px 0px;
+  transform: rotateY(-90deg) translateX(-50%);
 }
 
 .lt {
-    background-position: 300px 0px;
+  transform: rotateY(90deg) translateX(-50%);
 }
 
+.tp {
+  transform: rotateX(90deg) translateY(-50%);
+}
 
-.stone .bm, .dirt .bm, .grass .bm,  .gravel .bm, .brick .bm {
-    background-size: 400px 100px !important;
-	background-position: 300px 0px !important;
+.bm {
+  transform: rotateX(-90deg) translateY(-50%);
+}
+
+.ft {
+  transform: translateZ(50px) !important;
+}
+
+.bk {
+  transform: translateZ(-50px) rotateY(180deg) !important;
+}
+
+.bm {
+  top: 100%;
+}
+
+/* Block textures */
+
+.ft,
+.bk,
+.rt,
+.lt,
+.tp,
+.bm {
+  background-size: 400% 100% !important;
+  margin: -1;
+}
+
+.rt {
+  background-position: 100px 0px;
+}
+
+.bk {
+  background-position: 200px 0px;
+}
+
+.lt,
+.bm {
+  background-position: 300px 0px !important;
+}
+
+.grass .face {
+  background-image: url(/images/block_textures/grass_side.png);
 }
 
 .grass .tp {
-	background-size: 100px 100px  !important;
+  background-image: url(/images/block_textures/grass_top.png);
+  background-size: 100% 100% !important;
 }
 
-
-/* Grass textures */
-
-.grass .tp {
-    background-image: url(/images/block_textures/grass_top.png);   
-}
-.grass .ft, .grass .bk, .grass .rt, .grass .lt  {
-    background-image: url(/images/block_textures/grass_side.png);   
+.grass .bm,
+.dirt .face {
+  background-image: url(/images/block_textures/dirt.png);
 }
 
-/* dirt textures */
-.grass .bm, .dirt .ft, .dirt .bk, .dirt .rt, .dirt .lt, .dirt .tp, .dirt .bm {
-     background-image: url(/images/block_textures/dirt.png);     
+.gravel .face {
+  background-image: url(/images/block_textures/gravel.png);
 }
 
-/* Gravel textures */
-.gravel .ft, .gravel .bk, .gravel .rt, .gravel .lt, .gravel .tp, .gravel .bm {
-     background-image: url(/images/block_textures/gravel.png);     
+.stone .face {
+  background-image: url(/images/block_textures/stone.png);
 }
 
-/* Stone textures */
-.stone .ft, .stone .bk, .stone .rt, .stone .lt, .stone .tp, .stone .bm {
-     background-image: url(/images/block_textures/stone.png);     
+.brick .face {
+  background-image: url(/images/block_textures/brick.png);
 }
 
-/* brick textures */
-.brick .ft, .brick .bk, .brick .rt, .brick .lt, .brick .tp, .brick .bm {
-     background-image: url(/images/block_textures/brick.png);     
+/* Animations */
+
+.chunk.move-in {
+  animation: move-in 0.2s;
 }
 
-.btn-success {
-    color: #fff;
-    background-color: #5cb85c;
-    border-color: #4cae4c;
+@keyframes move-in {
+  from {
+    top: 100px
+  }
+
+  to {
+    top: 0
+  }
 }
 
-.btn {
-    display: inline-block;
-    padding: 6px 12px;
-    margin-bottom: 0;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1.42857143;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    -ms-touch-action: manipulation;
-    touch-action: manipulation;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    background-image: none;
-    border: 1px solid transparent;
-    border-radius: 4px;
+.fade-in {
+  animation: fade-in 0.2s;
+  animation-fill-mode: both;
 }
 
+@keyframes fade-in {
+  from {
+    opacity: 0
+  }
 
+  to {
+    opacity: 1;
+  }
+}
 
+.fade-out {
+  animation: fade-out 0.2s;
+  animation-fill-mode: both;
+}
 
+@keyframes fade-out {
+  from {
+    opacity: 1
+  }
+
+  to {
+    opacity: 0;
+    display: none;
+  }
+}

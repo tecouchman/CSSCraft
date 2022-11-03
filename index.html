@@ -3,58 +3,68 @@
 	<head>
 	  <title>CSSCRAFT</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">		
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+			<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+			<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 		<link href='styles/cssCraft.css' rel='stylesheet' type='text/css' />
 		<script src="javascript/prefixfree.min.js"></script>
 	</head>
 	<body>
-		<div id="ui" >
-			<button id="btn-pointer-lock" class="btn btn-success">Mouse Look</button>
-			<a id="btn-options-fullscreen"><img src="images/full-screen.png" alt="Menu" /></a>
-			<div id="options-menu-container">
-				<a id="btn-options-menu"><img src="images/menu.png" alt="Menu" /></a>
-				<div id="options-menu">
-					<label for="render-distance">Render Distance:</label>
-
-					<fieldset id="render-distance">
-						<input type="range" min="7" max="35" />
-						<label>15</label>
-					</fieldset>
+		<div id="ui" class="hidden" >
+			<button id="btn-pointer-lock">Click for mouse control</button>
+			<div id="menu">
+				<button id="btn-fullscreen"><img src="images/full-screen.png" alt="Menu" /></button>
+				<div id="menu-container">
+					<button id="btn-menu"><img src="images/menu.png" alt="Menu" /></button>
+					<div id="submenu">
+						<label for="render-distance">Render Distance:</label>
+	
+						<fieldset id="render-distance">
+							<input type="range" min="2" max="5" />
+							<label>3</label>
+						</fieldset>
+					</div>
 				</div>
 			</div>
 		</div>
 		<div id="start-screen">
-			<img id="logo" src="images/csscraft.png" alt="CSSCRAFT" />
 			<div class="container">
-				<button id="start" class="btn btn-success" >Start</button> 
-			</div>
-				<div>
-					<a href="https://github.com/tecouchman/CSSCraft" target="_blank" >
-						<div>
-							<img src="/images/GitHub.png" alt="GitHub Logo" />
-						</div>
-						<div>
-							View on GitHub
-						</div>
-					</a>
+				<img id="logo" src="images/csscraft.png" alt="CSSCRAFT" />
+				<div class="container">
+					<button id="start">Start</button>
+					<div id="github">
+						<a class="combo-button" href="https://github.com/tecouchman/CSSCraft" target="_blank" >
+							<span class="button"><img src="/images/GitHub.png" alt="GitHub Logo" /></span>
+							<span class="button">View on GitHub</span>
+						</a>
+					</div>
 				</div>
+			</div>
 		</div>
 		<div id="viewport" class="blur">
 			<div id="overlay">
 			</div>
 			<div id="game">
-				<div id="rotation" class="threedee">
-					<div id="scene" class="threedee">
+				<div id="rotation">
+					<div id="scene">
 					</div>
 				</div>
 			</div>
 		</div>
-		<script src="javascript/CSSCraft.js"></script>
-		<script src="javascript/math_functions.js"></script>
+		<script type="module" src="javascript/CSSCraft.js"></script>
 		<script src="javascript/perlin.js"></script>
-		<script src="javascript/level_manager.js"></script>
-		<script src="javascript/level_generator.js"></script>
-		<script src="javascript/init.js"></script>
+		<script type="module">
+			import { start, requestPointerLock, setDemoMode } from './javascript/CSSCraft.js'
+			start(true);
+
+			document.getElementById('start').onclick = function() {
+				requestPointerLock();
+				setDemoMode(false);
+				document.getElementById('start-screen').classList.add('fade-out');
+				document.getElementById('viewport').classList.remove('blur');
+				document.getElementById('ui').classList.remove('hidden');
+			};
+		</script>
 
 	</body>
 </html>
