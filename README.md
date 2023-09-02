@@ -4,6 +4,6 @@ Silly experiment with CSS 3D transforms that I made back in the day.
 
 Refactored it a bit and removed jQuery.
 
-[Play it here](https://tecouchman.github.io/CSSCraft)
+[Play it here](https://tecouchman.github.io/css-craft)
 
 ![image](/images/screenshot.jpg)
